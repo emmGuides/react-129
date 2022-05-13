@@ -1,5 +1,5 @@
 # This repository is for educational purposes
-# Based on Travers Media's React Crash Course 2021
+# Based on Traversy Media's React Crash Course 2021
 # For CMSC 129
 #
 #
