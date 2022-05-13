@@ -1,3 +1,7 @@
+# This repository is for educational purposes
+# Based on Travers Media's React Crash Course 2021
+# For CMSC 129
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
