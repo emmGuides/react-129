@@ -39,7 +39,7 @@ const AddTask = ({onAdd}) => {
         </div>
         <div className = "form-control form-control-check">
             <label>Set Reminder</label>
-            <input 
+            <input
             type="checkbox"
             checked = {reminder}
             value = {reminder} 

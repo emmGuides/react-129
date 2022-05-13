@@ -93,8 +93,11 @@ body {
 
 .form-control-check {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: left;
+}
+
+.checkBoxAddTask {
+  margin-left: -1000px;
 }
 
 .form-control-check label {

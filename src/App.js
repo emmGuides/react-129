@@ -1,11 +1,13 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import React from 'react'
 import Tasks from "./components/Tasks";
-import { useState, useEffect } from "react"
-
+import { useState, useEffect } from "react";
 import AddTask from "./components/AddTask";
 import Footer from "./components/Footer";
 import About from "./components/About";
+
+
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
@@ -77,35 +79,43 @@ const App = () => {
   })
 
   const data = await res.json()
-
-
-    console.log(id, tasks.reminder)
-    setTasks(tasks.map((task) => 
-                task.id === id ? 
-                {...task, reminder: !task.reminder} 
-                : task))
+  console.log(id, tasks.reminder)
+  setTasks(tasks.map((task) => 
+              task.id === id ? 
+              {...task, reminder: !task.reminder} 
+              : task))
   }
 
   return (
-   
+    <Router>
     <div className="container">
-      <Header text = 'Add'
+      <Header 
               onAdd={() => 
               setShowAddTask(!showAddTask)}
               showAdd={showAddTask}
       />
-      {showAddTask && <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ? (
-        <Tasks tasks={tasks} 
-        onDelete = {deleteTask}
-        onToggle = {toggleReminder}
-        /> ) : ('No tasks to show, maybe add one?'
-        )}
-        
+      
+        <Routes>
+          <Route path ='/' exact element={
+            <>
+            {showAddTask && <AddTask onAdd={addTask} />}
+              {tasks.length > 0 ? (
+                <Tasks 
+                tasks={tasks} 
+                onDelete = {deleteTask}
+                onToggle = {toggleReminder}
+                /> 
+                ) : (
+                  'No tasks to show, maybe add one?'
+                )
+              }
+            </>
+          }/>
+          <Route path='/about' element={<About/>}/>
+        </Routes> 
         <Footer/>
     </div>
-    
-  )
+    </Router>)
 }
 
 
@@ -115,5 +125,10 @@ const App = () => {
 //     return <h1>Hello from a class</h1>
 //   }
 // }
+{/* <Route path = '/' exact render={(props) => (
+          <>
+          
+          </>
+        )}/> */}
 
 export default App;
